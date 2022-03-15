@@ -11,18 +11,17 @@ int _printf(const char *format, ...)
 {
 	int i, j;
 	int string_value = 0;
-
-	mod_t mod[] = {
-		{"c", char_mod},
-		{"s", string_mod}, {"d", number_mod}, {"i", number_mod}, {NULL, NULL}
-		};
+	mod_t mod[] = {{"c", char_mod},
+			{"s", string_mod},
+			{"d", number_mod},
+			{"i", number_mod}, {NULL, NULL}};
 
 	va_list parameters;
 
 	va_start(parameters, format);
 
 	if (format == NULL)
-		return (0);
+		return (-1);
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%' && format[i + 1] != '%')
@@ -45,6 +44,7 @@ int _printf(const char *format, ...)
 		{
 			_putchar(format[i]);
 			string_value = string_value + 1;
+			i++;
 		}
 	}
 	va_end(parameters);
