@@ -2,6 +2,7 @@
 
 /**
  * _printf - My own printf function
+ *
  * @format: argument pointer 0
  * Return: returning the length of each string
  */
@@ -12,7 +13,8 @@ int _printf(const char *format, ...)
 	int string_value = 0;
 
 	mod_t mod[] = {
-		{"c", char_mod}, {"s", string_mod}, {NULL, NULL}
+		{"c", char_mod},
+		{"s", string_mod}, {"d", number_mod}, {"i", number_mod}, {NULL, NULL}
 		};
 
 	va_list parameters;
@@ -46,6 +48,5 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(parameters);
-
 	return (string_value);
 }
