@@ -39,3 +39,29 @@ int string_mod(va_list parameters)
 	}
 	return (counter);
 }
+
+/**
+ * number_mod - receive the undefined parameter and then print it
+ *
+ * @parameters: undefined parameters
+ * Return: the number of printed numbers and symbols
+ */
+
+int number_mod(va_list parameters)
+{
+	int value_d_i;
+	int counter;
+
+	value_d_i = va_arg(parameters, int);
+
+	if (value_d_i == 0)
+	{
+		_putchar('0');
+		return (1);
+	}
+	else
+	{
+		counter = print_number(value_d_i);
+		return (counter);
+	}
+}
