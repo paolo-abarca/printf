@@ -62,6 +62,15 @@ int number_mod(va_list parameters)
 		_putchar('0');
 		return (1);
 	}
+
+	if (value_d_i == INT_MIN || value_d_i < 0)
+	{
+		putchar('-');
+		counter = print_number(value_d_i * -1);
+		counter++;
+		return (counter);
+	}
+
 	else
 	{
 		counter = print_number(value_d_i);
