@@ -6,6 +6,8 @@
 
 
 ## Project overview
+    
+    This project is for replicate the C standard library printf() function
 
 ### Compilation:
 
@@ -15,7 +17,6 @@
 
 All files are written in C and follows the Betty coding style.
 
-## Function prototypes
 
 
 ## File description
@@ -23,8 +24,11 @@ All files are written in C and follows the Betty coding style.
 * **_printf.c:** - contains the function _printf()
 * **_putchar.c:** - contains the function _putchar()
 * **man_3_printf:** - manual page for  _printf() function.
+* **main.h:** - has the prototypes of all the functions of our _printf() function
+* **modules.c:** - has all the functions of all the modules that are used in an original printf
+* **print_number.c:** - it is used to print long numbers with the holberton _putchar tool
 
-## Function description
+## Prototype
 
 **int _printf(const char \*format, ...)**
 
@@ -52,7 +56,7 @@ Output:    Actual     : holberton
 ```
 
 ## Author
-##### Piero Ramirez
+### Piero Ramirez
 Holberton School, Cohort 17
-##### Paolo Abarca
+### Paolo Abarca
 Holberton School, Cohort 17
