@@ -12,7 +12,7 @@ int print_number(unsigned int n)
 	int counter = 0;
 	int r;
 
-	if (n / 10)
+	if ((n / 10) > 0)
 	{
 		counter = counter + 1;
 		r = print_number(n / 10);
