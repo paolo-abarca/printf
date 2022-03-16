@@ -22,6 +22,6 @@ int _printf(const char *format, ...);
 int char_mod(va_list parameters);
 int string_mod(va_list parameters);
 int number_mod(va_list parameters);
-int print_number(int n);
+int print_number(unsigned int n);
 
 #endif
