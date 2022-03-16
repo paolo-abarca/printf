@@ -7,34 +7,25 @@
  * Return: the number of printed numbers and symbols
  */
 
-int print_number(int n)
+int print_number(unsigned int n)
 {
 	int counter = 0;
 	int r;
 
-	if (n < 0)
+	if (n / 10)
 	{
-		_putchar ('-');
 		counter = counter + 1;
-		n = -(n);
+		r = print_number(n / 10);
+		counter = counter + r;
+		_putchar(n % 10 + '0');
+		return (counter);
 	}
 
-	if (n > 0)
+	else
 	{
-		if (n / 10)
-		{
-			counter = counter + 1;
-			r = print_number(n / 10);
-			counter = counter + r;
-			_putchar(n % 10 + '0');
-			return (counter);
-		}
-
-		else
-		{
-			_putchar (n + '0');
-			counter = counter + 1;
-		}
+		_putchar (n + '0');
+		counter = counter + 1;
 	}
+
 	return (counter);
 }
