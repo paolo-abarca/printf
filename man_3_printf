@@ -1,5 +1,4 @@
-.\"Manpage for _printf.
-.TH _printf "March 2022" "Holberton"
+.TH _printf 3
 .SH NAME
 printf \- format and write a string, character, or integer to stdout
 .SH SYNOPSIS
