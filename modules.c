@@ -32,6 +32,9 @@ int string_mod(va_list parameters)
 
 	value_s = va_arg(parameters, char *);
 
+	if (value_s == NULL)
+		value_s = "(null)";
+
 	for (i = 0; value_s[i] != '\0'; i++)
 	{
 		_putchar(value_s[i]);
