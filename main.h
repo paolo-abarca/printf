@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdarg.h>
+#include <limits.h>
 
 /**
  * struct mod - structure of printf modules
