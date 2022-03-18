@@ -1,3 +1,4 @@
+.TH 17/03/22
 .TH _printf 3
 .SH NAME
 printf \- format and write a string, character, or integer to stdout
@@ -24,6 +25,35 @@ ARGUMENT of data type string is printed in its place.
 .TP
 %d/%i
 ARGUMENT of data type integer is printed in its place.
+.SH EXAMPLE 1
+#include "main.h"
+
+int main(void)
+{
+
+_printf("Hello Ruben, Im %s", "persevering");
+
+return (0);
+
+}
+
+Hello Ruben, I'm a persevering
+
+
+.SH EXAMPLE 2
+int main(void)
+{
+        int len;
+
+        len = _printf("Hello");
+
+        return (len);
+}
+.br
+
+DESCRIPTION OF THIS EXAMPLE: We declare a len variable of integer type that will have as value the return of our _printf function with the parameter (hello) and with the return (len) I tell it that it returns the number of characters counted.
+And show on screen with echo $? the amount.
+
 .SH AUTHOR
 Written by Piero Ramirez and Paolo Abarca.
 .br
