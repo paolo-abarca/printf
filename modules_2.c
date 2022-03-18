@@ -9,12 +9,13 @@
 
 int rot_mod(va_list parameters)
 {
-
 	char *value_R;
-	int i;
+	char *p = NULL;
+	int i, j;
 	char n[] = "(null)";
 
-	value_R = rot13(malloc_str(va_arg(parameters, char *)));
+	value_R = va_arg(parameters, char *);
+
 	if (value_R == NULL)
 	{
 		for (i = 0; n[i] != '\0'; i++)
@@ -22,61 +23,55 @@ int rot_mod(va_list parameters)
 		return (6);
 	}
 
-	for (i = 0; value_R[i] != '\0'; i++)
-		_putchar(value_R[i]);
-	free(value_R);
+	for (i = 0; value_R[i]; i++)
+	{}
 
-	return (i);
-}
+	p = malloc(sizeof(char) * i);
 
-/**
- * malloc_str - create a new space in memory to copy the string
- *
- * @str: string
- * Return: string
- */
-
-char *malloc_str(char *str)
-{
-	char *copy;
-	unsigned int j, i;
-
-	if (str ==  NULL)
-		return (NULL);
-	for (i = 0; str[i] != '\0'; i++)
-		;
-	copy = malloc((i + 1) * sizeof(char));
-	if (copy == NULL)
-		return (NULL);
-	for (j = 0; j <= i; j++)
-		copy[j] = str[j];
-	return (copy);
-}
-
-/**
- * rot13 - String to rot13
- *
- * @p: pointer the string we want to convert in rot13
- * Return: string
- */
-
-char *rot13(char *p)
-{
-	int j;
-	int i;
-	char a1[] = {"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"};
-	char a2[] = {"NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm"};
-
-	for (j = 0; p[j] != '\0'; j++)
+	if (p == NULL)
 	{
-		for (i = 0; a1[i] != '\0'; i++)
+		_printf("malloc error");
+		exit(100);
+	}
+
+	for (i = 0; value_R[i]; i++)
+		p[i] = value_R[i];
+
+	p = rot13(p);
+
+	for (j = 0; p[j]; j++)
+	{
+		_putchar(p[j]);
+	}
+	free(p);
+
+	return (j - 1);
+}
+
+/**
+ * rot13 - funcion that encodes a string using rot13
+ *
+ * @str: string to be convert
+ *
+ * Return: pointer direction
+ */
+
+char *rot13(char *str)
+{
+	int i;
+
+	for (i = 0; (*(str + i) != '\0'); i++)
+	{
+		while ((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z'))
 		{
-			if (p[j] == a1[i])
+			if ((str[i] >= 'a' && str[i] <= 'm') || (str[i] >= 'A' && str[i] <= 'M'))
 			{
-				p[j] = a2[i];
+				str[i] = str[i] + 13;
 				break;
 			}
+			str[i] = str[i] - 13;
+			break;
 		}
 	}
-	return (p);
+	return (str);
 }
