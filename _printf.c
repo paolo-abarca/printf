@@ -8,7 +8,7 @@ int _printf(const char *format, ...)
 {
 	int i, j, string_value = 0, letter_fail = 0;
 	mod_t mod[] = {{"c", char_mod}, {"s", string_mod}, {"i", number_mod},
-			{"d", number_mod}, {NULL, NULL}};
+			{"d", number_mod}, {"b", binary_mod}, {NULL, NULL}};
 	va_list parameters;
 
 	va_start(parameters, format);
