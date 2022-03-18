@@ -8,7 +8,8 @@ int _printf(const char *format, ...)
 {
 	int i, j, string_value = 0, letter_fail = 0;
 	mod_t mod[] = {{"c", char_mod}, {"s", string_mod}, {"i", number_mod},
-			{"d", number_mod}, {"b", binary_mod}, {"r", rev_mod}, {NULL, NULL}};
+			{"d", number_mod}, {"b", binary_mod}, {"r", rev_mod}, {"R", rot_mod},
+			{NULL, NULL}};
 	va_list parameters;
 
 	va_start(parameters, format);
@@ -30,8 +31,7 @@ int _printf(const char *format, ...)
 			{
 				_putchar(format[i]);
 				string_value = string_value + 1;
-			}
-		}
+			}}
 		else if (format[i] == '%' && format[i + 1] == '%')
 		{
 			_putchar('%');
