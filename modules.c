@@ -110,3 +110,32 @@ int binary_mod(va_list parameters)
 
 	return (i);
 }
+
+/**
+ * rev_mod - print the inverted string
+ *
+ * @parameters: undefined parameters
+ * Return: the number of printed numbers
+ */
+
+int rev_mod(va_list parameters)
+{
+	int i, j;
+	char *value_r;
+	char n[] = "(null)";
+
+	value_r = va_arg(parameters, char *);
+	i = 0;
+	if (value_r == NULL)
+	{
+		for (i = 0; n[i] != '\0'; i++)
+			_putchar(n[i]);
+		return (6);
+	}
+	j = 0;
+	while (value_r[j] != '\0')
+		j++;
+	for (i = j - 1; i >= 0; i--)
+		_putchar (value_r[i]);
+	return (j);
+}
