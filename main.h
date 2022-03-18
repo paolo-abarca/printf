@@ -25,5 +25,6 @@ int string_mod(va_list parameters);
 int number_mod(va_list parameters);
 int print_number(unsigned int n);
 int binary_mod(va_list parameters);
+int rev_mod(va_list parameters);
 
 #endif
