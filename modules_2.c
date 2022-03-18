@@ -9,13 +9,12 @@
 
 int rot_mod(va_list parameters)
 {
+
 	char *value_R;
-	char *p = NULL;
-	int i, j;
+	int i;
 	char n[] = "(null)";
 
-	value_R = va_arg(parameters, char *);
-
+	value_R = rot13(malloc_str(va_arg(parameters, char *)));
 	if (value_R == NULL)
 	{
 		for (i = 0; n[i] != '\0'; i++)
@@ -23,55 +22,61 @@ int rot_mod(va_list parameters)
 		return (6);
 	}
 
-	for (i = 0; value_R[i]; i++)
-	{}
+	for (i = 0; value_R[i] != '\0'; i++)
+		_putchar(value_R[i]);
+	free(value_R);
 
-	p = malloc(sizeof(char) * i);
-
-	if (p == NULL)
-	{
-		_printf("malloc error");
-		exit(100);
-	}
-
-	for (i = 0; value_R[i]; i++)
-		p[i] = value_R[i];
-
-	p = rot13(p);
-
-	for (j = 0; p[j]; j++)
-	{
-		_putchar(p[j]);
-	}
-	free(p);
-
-	return (j - 1);
+	return (i);
 }
 
 /**
- * rot13 - funcion that encodes a string using rot13
+ * malloc_str - create a new space in memory to copy the string
  *
- * @str: string to be convert
- *
- * Return: pointer direction
+ * @str: string
+ * Return: string
  */
 
-char *rot13(char *str)
+char *malloc_str(char *str)
 {
-	int i;
+	char *copy;
+	unsigned int j, i;
 
-	for (i = 0; (*(str + i) != '\0'); i++)
+	if (str ==  NULL)
+		return (NULL);
+	for (i = 0; str[i] != '\0'; i++)
+		;
+	copy = malloc((i + 1) * sizeof(char));
+	if (copy == NULL)
+		return (NULL);
+	for (j = 0; j <= i; j++)
+		copy[j] = str[j];
+	return (copy);
+}
+
+/**
+ * rot13 - String to rot13
+ *
+ * @p: pointer the string we want to convert in rot13
+ * Return: string
+ */
+
+char *rot13(char *p)
+{
+	int j;
+	int i;
+	char a1[] = {"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"};
+	char a2[] = {"NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm"};
+
+	for (j = 0; p[j] != '\0'; j++)
 	{
-		while ((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z'))
+		for (i = 0; a1[i] != '\0'; i++)
 		{
-			if ((str[i] >= 'a' && str[i] <= 'm') || (str[i] >= 'A' && str[i] <= 'M'))
+			if (p[j] == a1[i])
 			{
-				str[i] = str[i] + 13;
+				p[j] = a2[i];
 				break;
 			}
-			str[i] = str[i] - 13;
-			break;
 		}
 	}
-	return (str);
+	return (p);
 }
