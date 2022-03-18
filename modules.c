@@ -77,3 +77,36 @@ int number_mod(va_list parameters)
 		return (counter);
 	}
 }
+
+/**
+ * binary_mod - function that converts an int to binary
+ *
+ * @parameters: undefined parameters
+ * Return: the number of printed numbers
+ */
+
+int binary_mod(va_list parameters)
+{
+	int value_b;
+	int  i, j;
+	int arr[100];
+
+	value_b = va_arg(parameters, int);
+
+	if (value_b == 0)
+	{
+		_putchar('0');
+		return (1);
+	}
+
+	for (i = 0; value_b > 0; i++)
+	{
+		arr[i] = value_b % 2;
+		value_b = value_b / 2;
+	}
+
+	for (j = i - 1; j >= 0; j--)
+		_putchar(arr[j] + '0');
+
+	return (i);
+}
